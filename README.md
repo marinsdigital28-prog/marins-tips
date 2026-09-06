@@ -1,37 +1,75 @@
 # Marins TIPS
 
-App de análises e entradas diárias de futebol.
+**Sistema de análise esportiva multiagente com consenso entre IAs**
 
-## Como funciona
+Nome mantido. Ideia do TIPMASTER AI implementada de forma incremental sob a marca Marins TIPS.
 
-- Você me pede para **atualizar** os jogos do dia
-- Eu verifico a agenda ampla do dia, não apenas o Brasileirão
-- Priorizo as principais ligas nacionais e competições internacionais, filtrando os jogos de maior relevância antes da análise
-- Aplico a análise Manus x Grok sem consultar odds; quando não houver segurança técnica, registro **sem entrada**
-- Tudo fica aqui de forma organizada e visual
+---
 
-## Cobertura diária
+## O que é
 
-O levantamento deve considerar, conforme a programação do dia, as principais competições da Europa e das Américas, além de torneios continentais e nacionais relevantes. A lista não deve ficar restrita ao Campeonato Brasileiro. Depois do levantamento, os jogos são filtrados por relevância, qualidade das informações disponíveis, escalações, desfalques, forma recente, mando de campo, calendário e contexto competitivo.
+Marins TIPS não é apenas um gerador de palpites.
 
-### Ligas prioritárias monitoradas
+É um **comitê virtual de analistas** que:
 
-**Europa:** Premier League (Inglaterra), La Liga (Espanha), Serie A (Itália), Bundesliga (Alemanha), Ligue 1 (França), Eredivisie (Países Baixos), Primeira Liga (Portugal), Belgian Pro League (Bélgica), Süper Lig (Turquia), Scottish Premiership (Escócia), Austrian Bundesliga (Áustria), Swiss Super League (Suíça) e Super League (Grécia).
+- Analisa jogos de forma independente (Grok + Manus)
+- Compara as conclusões
+- Calcula consenso e confiança
+- Detecta valor (Value Bet)
+- Filtra oportunidades ruins
+- Tem coragem de dizer **NO BET**
 
-**Américas:** Campeonato Brasileiro Série A, Liga Profesional (Argentina), Liga MX (México), Major League Soccer (Estados Unidos e Canadá), Primera A (Colômbia), LigaPro Serie A (Equador), Primera División (Uruguai), Primera División (Chile), Liga 1 (Peru), División Profesional (Paraguai), Primera División (Bolívia) e Liga Promérica (Costa Rica).
+---
 
-**Competições continentais e nacionais relevantes:** UEFA Champions League, UEFA Europa League, UEFA Conference League, Copa Libertadores, Copa Sul-Americana, CONCACAF Champions Cup, Copa do Brasil, FA Cup, Copa del Rey, Coppa Italia, DFB-Pokal, Coupe de France e Taça de Portugal.
+## Status Atual
 
-O monitoramento não significa recomendar entrada em todos os jogos. A prioridade é selecionar os confrontos com dados confiáveis, escalações acompanháveis e contexto técnico suficiente; partidas sem segurança permanecem como **sem entrada**.
+### Fase 1 — Fundação (em andamento)
 
-### Estratégia de análise
+- [x] Nome: Marins TIPS
+- [x] Página diária com análise dual (Grok x Manus)
+- [x] Cobertura das principais ligas (não só Brasileirão)
+- [x] Arquitetura documentada (`ARCHITECTURE.md`)
+- [ ] Estrutura de pastas e monorepo
+- [ ] Schema do banco de dados
+- [ ] Consensus Engine
+- [ ] Confidence Score
+- [ ] Value Engine
 
-As odds não definem o palpite e não são consultadas como critério de seleção. A análise começa pelos fatores esportivos e termina com uma decisão independente: entrada principal, mercado mais protegido quando houver justificativa técnica ou **sem entrada** quando o confronto for incerto. O cruzamento Manus x Grok deve mostrar as duas leituras e só consolidar uma entrada quando houver base suficiente.
+---
 
-## Repositório
+## Como usar hoje
 
-https://github.com/marinsdigital28-prog/marins-tips
+1. Eu atualizo os jogos principais do dia
+2. Preencho a coluna **Grok**
+3. Você pede para o Manus analisar (ou cola a análise dele)
+4. Eu cruzo e gero a **Entrada Final** com classificação de consenso
 
-## Atualizações
+Comandos:
+- `Atualiza o Marins TIPS`
+- `Atualiza os jogos`
+- `Cruzar com Manus` (quando você colar a análise)
 
-Sempre diga: **"Atualiza o Marins TIPS"** ou **"Atualiza os jogos"** que eu atualizo a página com os jogos do dia + entradas sugeridas.
+---
+
+## Princípio Central
+
+> O sistema procura razões para **não apostar**.  
+> A melhor decisão em muitos dias é: **NO BET**.
+
+---
+
+## Roadmap
+
+Veja o arquivo completo em [`ARCHITECTURE.md`](./ARCHITECTURE.md)
+
+---
+
+## Aviso
+
+Este sistema fornece análises estatísticas e probabilísticas.  
+Resultados esportivos são incertos. Não existe garantia de lucro.  
+Apostas envolvem risco de perda financeira.
+
+---
+
+**Repositório:** https://github.com/marinsdigital28-prog/marins-tips
