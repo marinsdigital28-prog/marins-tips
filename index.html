@@ -9,374 +9,233 @@
   <style>
     @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap');
     body { font-family: 'Inter', sans-serif; }
-    .card-hover { transition: all 0.25s ease; cursor: pointer; }
-    .card-hover:hover { transform: translateY(-3px); box-shadow: 0 12px 28px -8px rgb(0 0 0 / 0.4); }
-    .modal-overlay { background: rgba(0,0,0,0.75); backdrop-filter: blur(6px); }
-    .prob-bar { height: 8px; border-radius: 9999px; }
+    .card-hover { transition: all 0.2s ease; }
+    .card-hover:hover { transform: translateY(-2px); }
   </style>
 </head>
 <body class="bg-gray-950 text-white min-h-screen">
 
   <!-- Header -->
   <header class="bg-gradient-to-r from-emerald-600 to-teal-700 border-b border-emerald-500/30 sticky top-0 z-50">
-    <div class="max-w-4xl mx-auto px-4 py-4 flex items-center justify-between">
+    <div class="max-w-3xl mx-auto px-4 py-4 flex items-center justify-between">
       <div class="flex items-center gap-3">
         <div class="w-10 h-10 bg-white/20 rounded-xl flex items-center justify-center">
           <i class="fas fa-futbol text-xl"></i>
         </div>
         <div>
-          <h1 class="text-xl font-bold tracking-tight">Marins TIPS</h1>
-          <p class="text-xs text-emerald-100">O melhor tipster • Análises & Entradas</p>
+          <h1 class="text-xl font-bold">Marins TIPS</h1>
+          <p class="text-xs text-emerald-100">Grok + Manus • Análises Combinadas</p>
         </div>
       </div>
       <div class="text-right">
-        <p class="text-sm font-medium" id="data-hoje">05/09/2026</p>
-        <p class="text-xs text-emerald-100">Brasileirão Série A</p>
+        <p class="text-sm font-medium">06/09/2026</p>
+        <p class="text-xs text-emerald-100">Domingo</p>
       </div>
     </div>
   </header>
 
-  <main class="max-w-4xl mx-auto px-4 py-6 space-y-6">
+  <main class="max-w-3xl mx-auto px-4 py-6 space-y-6">
 
     <!-- Status -->
-    <div class="bg-emerald-500/10 border border-emerald-500/30 rounded-2xl p-4 flex items-center gap-3">
-      <div class="w-3 h-3 bg-emerald-400 rounded-full animate-pulse"></div>
-      <p class="text-sm text-emerald-300">
-        <span class="font-semibold">Atualizado:</span> 05/09/2026 • 22:52 • Clique em qualquer jogo para ver o palpite completo
-      </p>
+    <div class="bg-emerald-500/10 border border-emerald-500/30 rounded-2xl p-4">
+      <div class="flex items-center gap-3 mb-2">
+        <div class="w-3 h-3 bg-emerald-400 rounded-full animate-pulse"></div>
+        <p class="text-sm font-semibold text-emerald-300">Atualizado agora • Preparado para análises combinadas</p>
+      </div>
+      <p class="text-xs text-gray-400">Grok já colocou as entradas. Quando o Manus terminar, cole aqui que eu cruzo e atualizo a entrada final.</p>
     </div>
 
-    <!-- Jogos do Dia -->
-    <section>
-      <h2 class="text-lg font-bold mb-4 flex items-center gap-2">
-        <i class="fas fa-calendar-day text-emerald-400"></i>
-        Jogos do Dia
-      </h2>
+    <!-- Título -->
+    <div class="text-center py-2">
+      <h2 class="text-2xl font-bold">Jogos de Amanhã</h2>
+      <p class="text-sm text-gray-400 mt-1">Brasileirão Série A • 26ª rodada</p>
+    </div>
 
-      <div class="space-y-4" id="lista-jogos">
+    <!-- JOGOS -->
+    <div class="space-y-5">
 
-        <!-- Bragantino x Bahia -->
-        <div onclick="abrirModal('bragantino-bahia')" class="bg-gray-900 border border-gray-800 rounded-2xl p-5 card-hover">
-          <div class="flex items-center justify-between mb-3">
-            <span class="text-xs font-medium px-2.5 py-1 bg-gray-700 text-gray-300 rounded-full">Finalizado</span>
-            <span class="text-xs text-gray-400">16:00</span>
+      <!-- 1. Coritiba x Mirassol -->
+      <div class="bg-gray-900 border border-gray-800 rounded-2xl overflow-hidden">
+        <div class="px-5 py-4 border-b border-gray-800 flex justify-between items-center">
+          <div>
+            <p class="font-bold text-lg">Coritiba x Mirassol</p>
+            <p class="text-xs text-gray-400">11:00 • Couto Pereira</p>
           </div>
-          <div class="flex items-center justify-between">
-            <div class="text-center flex-1"><p class="font-semibold text-lg">RB Bragantino</p></div>
-            <div class="px-4"><p class="text-2xl font-bold text-emerald-400">2 - 3</p></div>
-            <div class="text-center flex-1"><p class="font-semibold text-lg">Bahia</p></div>
-          </div>
-          <p class="text-xs text-center text-gray-500 mt-3">Toque para ver análise completa</p>
+          <span class="text-xs bg-amber-500/20 text-amber-400 px-2.5 py-1 rounded-full">11:00</span>
         </div>
-
-        <!-- São Paulo x Atlético-MG -->
-        <div onclick="abrirModal('sao-paulo-atletico')" class="bg-gray-900 border border-gray-800 rounded-2xl p-5 card-hover">
-          <div class="flex items-center justify-between mb-3">
-            <span class="text-xs font-medium px-2.5 py-1 bg-gray-700 text-gray-300 rounded-full">Finalizado</span>
-            <span class="text-xs text-gray-400">18:30</span>
-          </div>
-          <div class="flex items-center justify-between">
-            <div class="text-center flex-1"><p class="font-semibold text-lg">São Paulo</p></div>
-            <div class="px-4"><p class="text-2xl font-bold text-emerald-400">2 - 0</p></div>
-            <div class="text-center flex-1"><p class="font-semibold text-lg">Atlético-MG</p></div>
-          </div>
-          <p class="text-xs text-center text-gray-500 mt-3">Toque para ver análise completa</p>
-        </div>
-
-        <!-- Fluminense x Vasco -->
-        <div onclick="abrirModal('fluminense-vasco')" class="bg-gradient-to-br from-emerald-900/40 to-gray-900 border border-emerald-500/40 rounded-2xl p-5 card-hover relative overflow-hidden">
-          <div class="absolute top-0 right-0 w-32 h-32 bg-emerald-500/10 rounded-full -translate-y-1/2 translate-x-1/2"></div>
-          <div class="flex items-center justify-between mb-3 relative">
-            <span class="text-xs font-medium px-2.5 py-1 bg-red-500/20 text-red-400 rounded-full flex items-center gap-1.5">
-              <span class="w-1.5 h-1.5 bg-red-400 rounded-full animate-pulse"></span> AO VIVO / Finalizando
-            </span>
-            <span class="text-xs text-gray-400">21:00 • Maracanã</span>
-          </div>
-          <div class="flex items-center justify-between relative">
-            <div class="text-center flex-1">
-              <p class="font-bold text-xl">Fluminense</p>
-              <p class="text-xs text-gray-400 mt-1">5º</p>
+        <div class="p-5 space-y-4">
+          <div class="grid grid-cols-2 gap-3">
+            <div class="bg-gray-800/70 rounded-xl p-3">
+              <p class="text-xs text-emerald-400 font-medium mb-1">GROK</p>
+              <p class="font-semibold">Coritiba vence (1)</p>
+              <p class="text-xs text-gray-400 mt-1">Confiança: Média-Alta</p>
             </div>
-            <div class="px-4 text-center">
-              <p class="text-3xl font-extrabold">1 - 0</p>
-              <p class="text-xs text-emerald-400 mt-1">Acosta 61'</p>
-            </div>
-            <div class="text-center flex-1">
-              <p class="font-bold text-xl">Vasco</p>
-              <p class="text-xs text-gray-400 mt-1">16º</p>
+            <div class="bg-gray-800/70 rounded-xl p-3">
+              <p class="text-xs text-blue-400 font-medium mb-1">MANUS</p>
+              <p class="font-semibold text-gray-500">Aguardando...</p>
+              <p class="text-xs text-gray-500 mt-1">—</p>
             </div>
           </div>
-          <p class="text-xs text-center text-emerald-300/80 mt-4 relative">Toque para ver o palpite completo + probabilidade</p>
-        </div>
-
-      </div>
-    </section>
-
-    <!-- Amanhã -->
-    <section>
-      <h2 class="text-lg font-bold mb-4 flex items-center gap-2">
-        <i class="fas fa-clock text-amber-400"></i>
-        Amanhã (Domingo) — Clique para analisar
-      </h2>
-      <div class="space-y-3">
-        <div onclick="abrirModal('coritiba-mirassol')" class="bg-gray-900 border border-gray-800 rounded-xl p-4 card-hover flex justify-between items-center">
-          <span class="font-medium">Coritiba x Mirassol</span>
-          <span class="text-sm text-gray-400">11:00</span>
-        </div>
-        <div onclick="abrirModal('cruzeiro-athletico')" class="bg-gray-900 border border-gray-800 rounded-xl p-4 card-hover flex justify-between items-center">
-          <span class="font-medium">Cruzeiro x Athletico-PR</span>
-          <span class="text-sm text-gray-400">16:00</span>
-        </div>
-        <div onclick="abrirModal('internacional-santos')" class="bg-gray-900 border border-gray-800 rounded-xl p-4 card-hover flex justify-between items-center">
-          <span class="font-medium">Internacional x Santos</span>
-          <span class="text-sm text-gray-400">16:00</span>
-        </div>
-        <div onclick="abrirModal('remo-flamengo')" class="bg-gray-900 border border-gray-800 rounded-xl p-4 card-hover flex justify-between items-center">
-          <span class="font-medium">Remo x Flamengo</span>
-          <span class="text-sm text-gray-400">16:00</span>
-        </div>
-        <div onclick="abrirModal('botafogo-palmeiras')" class="bg-gray-900 border border-gray-800 rounded-xl p-4 card-hover flex justify-between items-center">
-          <span class="font-medium">Botafogo x Palmeiras</span>
-          <span class="text-sm text-gray-400">18:30</span>
-        </div>
-        <div onclick="abrirModal('corinthians-chapecoense')" class="bg-gray-900 border border-gray-800 rounded-xl p-4 card-hover flex justify-between items-center">
-          <span class="font-medium">Corinthians x Chapecoense</span>
-          <span class="text-sm text-gray-400">19:30</span>
+          <div class="bg-emerald-500/10 border border-emerald-500/30 rounded-xl p-3">
+            <p class="text-xs text-emerald-400 font-medium">ENTRADA FINAL (até o momento)</p>
+            <p class="font-bold">Coritiba vence</p>
+          </div>
         </div>
       </div>
-    </section>
 
-    <footer class="text-center pt-8 pb-10 border-t border-gray-800">
-      <p class="text-sm text-gray-500">Marins TIPS • O melhor tipster</p>
-      <p class="text-xs text-gray-600 mt-1">Apostas envolvem risco. Jogue com responsabilidade.</p>
+      <!-- 2. Cruzeiro x Athletico -->
+      <div class="bg-gray-900 border border-gray-800 rounded-2xl overflow-hidden">
+        <div class="px-5 py-4 border-b border-gray-800 flex justify-between items-center">
+          <div>
+            <p class="font-bold text-lg">Cruzeiro x Athletico-PR</p>
+            <p class="text-xs text-gray-400">16:00 • Mineirão</p>
+          </div>
+          <span class="text-xs bg-amber-500/20 text-amber-400 px-2.5 py-1 rounded-full">16:00</span>
+        </div>
+        <div class="p-5 space-y-4">
+          <div class="grid grid-cols-2 gap-3">
+            <div class="bg-gray-800/70 rounded-xl p-3">
+              <p class="text-xs text-emerald-400 font-medium mb-1">GROK</p>
+              <p class="font-semibold">Ambas marcam (BTTS)</p>
+              <p class="text-xs text-gray-400 mt-1">Confiança: Alta</p>
+            </div>
+            <div class="bg-gray-800/70 rounded-xl p-3">
+              <p class="text-xs text-blue-400 font-medium mb-1">MANUS</p>
+              <p class="font-semibold text-gray-500">Aguardando...</p>
+            </div>
+          </div>
+          <div class="bg-emerald-500/10 border border-emerald-500/30 rounded-xl p-3">
+            <p class="text-xs text-emerald-400 font-medium">ENTRADA FINAL (até o momento)</p>
+            <p class="font-bold">Ambas marcam</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- 3. Internacional x Santos -->
+      <div class="bg-gray-900 border border-gray-800 rounded-2xl overflow-hidden">
+        <div class="px-5 py-4 border-b border-gray-800 flex justify-between items-center">
+          <div>
+            <p class="font-bold text-lg">Internacional x Santos</p>
+            <p class="text-xs text-gray-400">16:00 • Beira-Rio</p>
+          </div>
+          <span class="text-xs bg-amber-500/20 text-amber-400 px-2.5 py-1 rounded-full">16:00</span>
+        </div>
+        <div class="p-5 space-y-4">
+          <div class="grid grid-cols-2 gap-3">
+            <div class="bg-gray-800/70 rounded-xl p-3">
+              <p class="text-xs text-emerald-400 font-medium mb-1">GROK</p>
+              <p class="font-semibold">Under 2.5 gols</p>
+              <p class="text-xs text-gray-400 mt-1">Confiança: Média</p>
+            </div>
+            <div class="bg-gray-800/70 rounded-xl p-3">
+              <p class="text-xs text-blue-400 font-medium mb-1">MANUS</p>
+              <p class="font-semibold text-gray-500">Aguardando...</p>
+            </div>
+          </div>
+          <div class="bg-emerald-500/10 border border-emerald-500/30 rounded-xl p-3">
+            <p class="text-xs text-emerald-400 font-medium">ENTRADA FINAL (até o momento)</p>
+            <p class="font-bold">Under 2.5</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- 4. Remo x Flamengo -->
+      <div class="bg-gray-900 border border-gray-800 rounded-2xl overflow-hidden">
+        <div class="px-5 py-4 border-b border-gray-800 flex justify-between items-center">
+          <div>
+            <p class="font-bold text-lg">Remo x Flamengo</p>
+            <p class="text-xs text-gray-400">16:00 • Mangueirão</p>
+          </div>
+          <span class="text-xs bg-amber-500/20 text-amber-400 px-2.5 py-1 rounded-full">16:00</span>
+        </div>
+        <div class="p-5 space-y-4">
+          <div class="grid grid-cols-2 gap-3">
+            <div class="bg-gray-800/70 rounded-xl p-3">
+              <p class="text-xs text-emerald-400 font-medium mb-1">GROK</p>
+              <p class="font-semibold">Flamengo vence (2)</p>
+              <p class="text-xs text-gray-400 mt-1">Confiança: Muito Alta</p>
+            </div>
+            <div class="bg-gray-800/70 rounded-xl p-3">
+              <p class="text-xs text-blue-400 font-medium mb-1">MANUS</p>
+              <p class="font-semibold text-gray-500">Aguardando...</p>
+            </div>
+          </div>
+          <div class="bg-emerald-500/10 border border-emerald-500/30 rounded-xl p-3">
+            <p class="text-xs text-emerald-400 font-medium">ENTRADA FINAL (até o momento)</p>
+            <p class="font-bold">Flamengo vence</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- 5. Botafogo x Palmeiras -->
+      <div class="bg-gray-900 border border-gray-800 rounded-2xl overflow-hidden">
+        <div class="px-5 py-4 border-b border-gray-800 flex justify-between items-center">
+          <div>
+            <p class="font-bold text-lg">Botafogo x Palmeiras</p>
+            <p class="text-xs text-gray-400">18:30 • Nilton Santos</p>
+          </div>
+          <span class="text-xs bg-amber-500/20 text-amber-400 px-2.5 py-1 rounded-full">18:30</span>
+        </div>
+        <div class="p-5 space-y-4">
+          <div class="grid grid-cols-2 gap-3">
+            <div class="bg-gray-800/70 rounded-xl p-3">
+              <p class="text-xs text-emerald-400 font-medium mb-1">GROK</p>
+              <p class="font-semibold">Palmeiras não perde (X2)</p>
+              <p class="text-xs text-gray-400 mt-1">Confiança: Alta</p>
+            </div>
+            <div class="bg-gray-800/70 rounded-xl p-3">
+              <p class="text-xs text-blue-400 font-medium mb-1">MANUS</p>
+              <p class="font-semibold text-gray-500">Aguardando...</p>
+            </div>
+          </div>
+          <div class="bg-emerald-500/10 border border-emerald-500/30 rounded-xl p-3">
+            <p class="text-xs text-emerald-400 font-medium">ENTRADA FINAL (até o momento)</p>
+            <p class="font-bold">Palmeiras +0.5 / X2</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- 6. Corinthians x Chapecoense -->
+      <div class="bg-gray-900 border border-gray-800 rounded-2xl overflow-hidden">
+        <div class="px-5 py-4 border-b border-gray-800 flex justify-between items-center">
+          <div>
+            <p class="font-bold text-lg">Corinthians x Chapecoense</p>
+            <p class="text-xs text-gray-400">19:30 • Neo Química Arena</p>
+          </div>
+          <span class="text-xs bg-amber-500/20 text-amber-400 px-2.5 py-1 rounded-full">19:30</span>
+        </div>
+        <div class="p-5 space-y-4">
+          <div class="grid grid-cols-2 gap-3">
+            <div class="bg-gray-800/70 rounded-xl p-3">
+              <p class="text-xs text-emerald-400 font-medium mb-1">GROK</p>
+              <p class="font-semibold">Corinthians vence (1)</p>
+              <p class="text-xs text-gray-400 mt-1">Confiança: Alta</p>
+            </div>
+            <div class="bg-gray-800/70 rounded-xl p-3">
+              <p class="text-xs text-blue-400 font-medium mb-1">MANUS</p>
+              <p class="font-semibold text-gray-500">Aguardando...</p>
+            </div>
+          </div>
+          <div class="bg-emerald-500/10 border border-emerald-500/30 rounded-xl p-3">
+            <p class="text-xs text-emerald-400 font-medium">ENTRADA FINAL (até o momento)</p>
+            <p class="font-bold">Corinthians vence</p>
+          </div>
+        </div>
+      </div>
+
+    </div>
+
+    <!-- Aviso -->
+    <div class="bg-blue-500/10 border border-blue-500/30 rounded-2xl p-4 text-center">
+      <p class="text-sm text-blue-300 font-medium">Quando o Manus terminar</p>
+      <p class="text-xs text-gray-400 mt-1">Cole as análises dele aqui no chat que eu atualizo tudo e gero a entrada final consolidada.</p>
+    </div>
+
+    <footer class="text-center pt-6 pb-10 text-xs text-gray-600">
+      Marins TIPS • Grok + Manus trabalhando juntos<br>
+      Apostas envolvem risco. Jogue com responsabilidade.
     </footer>
   </main>
 
-  <!-- MODAL -->
-  <div id="modal" class="fixed inset-0 z-50 hidden items-center justify-center p-4 modal-overlay">
-    <div class="bg-gray-900 border border-gray-700 rounded-3xl max-w-lg w-full max-h-[90vh] overflow-y-auto shadow-2xl">
-      <div class="sticky top-0 bg-gray-900 border-b border-gray-800 px-5 py-4 flex justify-between items-center rounded-t-3xl">
-        <h3 id="modal-titulo" class="font-bold text-lg"></h3>
-        <button onclick="fecharModal()" class="w-9 h-9 rounded-full bg-gray-800 flex items-center justify-center hover:bg-gray-700">
-          <i class="fas fa-times"></i>
-        </button>
-      </div>
-      <div id="modal-conteudo" class="p-5 space-y-5"></div>
-    </div>
-  </div>
-
-  <script>
-    const dados = {
-      "bragantino-bahia": {
-        titulo: "RB Bragantino 2 x 3 Bahia",
-        status: "Finalizado",
-        analise: `
-          <div class="space-y-4">
-            <div class="bg-emerald-500/10 border border-emerald-500/30 rounded-xl p-4">
-              <p class="text-sm font-semibold text-emerald-300 mb-1">Resultado final</p>
-              <p class="text-xl font-bold">Bahia venceu por 3 a 2 (virada)</p>
-            </div>
-            <p class="text-sm text-gray-300">Bahia mostrou grande capacidade de reação. Marcou 3 gols fora de casa e confirmou o bom momento. Bragantino sofreu no segundo tempo.</p>
-            <div>
-              <p class="text-xs text-gray-400 mb-2">Probabilidades pré-jogo (estimadas)</p>
-              <div class="space-y-2 text-sm">
-                <div class="flex justify-between"><span>Casa</span><span>38%</span></div>
-                <div class="flex justify-between"><span>Empate</span><span>28%</span></div>
-                <div class="flex justify-between"><span>Fora</span><span>34%</span></div>
-              </div>
-            </div>
-          </div>`
-      },
-      "sao-paulo-atletico": {
-        titulo: "São Paulo 2 x 0 Atlético-MG",
-        status: "Finalizado",
-        analise: `
-          <div class="space-y-4">
-            <div class="bg-emerald-500/10 border border-emerald-500/30 rounded-xl p-4">
-              <p class="text-sm font-semibold text-emerald-300 mb-1">Resultado final</p>
-              <p class="text-xl font-bold">São Paulo venceu 2 a 0</p>
-            </div>
-            <p class="text-sm text-gray-300">São Paulo controlou o jogo e resolveu no segundo tempo com Luciano e Iago. Atlético-MG pouco criou.</p>
-            <div>
-              <p class="text-xs text-gray-400 mb-2">Probabilidades pré-jogo</p>
-              <div class="space-y-2 text-sm">
-                <div class="flex justify-between"><span>Casa</span><span>42%</span></div>
-                <div class="flex justify-between"><span>Empate</span><span>30%</span></div>
-                <div class="flex justify-between"><span>Fora</span><span>28%</span></div>
-              </div>
-            </div>
-          </div>`
-      },
-      "fluminense-vasco": {
-        titulo: "Fluminense x Vasco",
-        status: "Ao vivo / Finalizando",
-        analise: `
-          <div class="space-y-5">
-            <div class="bg-emerald-500/10 border border-emerald-500/40 rounded-xl p-4">
-              <p class="text-xs text-emerald-400 font-medium mb-1">ENTRADA PRINCIPAL</p>
-              <p class="text-xl font-bold text-white">Fluminense vence ou Empate (1X)</p>
-              <p class="text-sm text-emerald-300 mt-1">Confiança: Alta</p>
-            </div>
-
-            <div>
-              <p class="text-sm font-semibold mb-3">Probabilidades estimadas</p>
-              <div class="space-y-3">
-                <div>
-                  <div class="flex justify-between text-sm mb-1"><span>Fluminense</span><span class="font-medium">48%</span></div>
-                  <div class="w-full bg-gray-800 rounded-full h-2"><div class="bg-emerald-500 h-2 rounded-full" style="width:48%"></div></div>
-                </div>
-                <div>
-                  <div class="flex justify-between text-sm mb-1"><span>Empate</span><span class="font-medium">27%</span></div>
-                  <div class="w-full bg-gray-800 rounded-full h-2"><div class="bg-amber-400 h-2 rounded-full" style="width:27%"></div></div>
-                </div>
-                <div>
-                  <div class="flex justify-between text-sm mb-1"><span>Vasco</span><span class="font-medium">25%</span></div>
-                  <div class="w-full bg-gray-800 rounded-full h-2"><div class="bg-red-400 h-2 rounded-full" style="width:25%"></div></div>
-                </div>
-              </div>
-            </div>
-
-            <div class="grid grid-cols-2 gap-3 text-center">
-              <div class="bg-gray-800/60 rounded-xl p-3">
-                <p class="text-xs text-gray-400">Over 2.5</p>
-                <p class="text-lg font-bold">41%</p>
-              </div>
-              <div class="bg-gray-800/60 rounded-xl p-3">
-                <p class="text-xs text-gray-400">Ambas marcam</p>
-                <p class="text-lg font-bold">52%</p>
-              </div>
-            </div>
-
-            <div>
-              <p class="text-sm font-semibold mb-2">Por que essa entrada?</p>
-              <ul class="text-sm text-gray-300 space-y-1.5 list-disc list-inside">
-                <li>Fluminense joga em casa (Maracanã) e está em melhor fase</li>
-                <li>Vasco luta contra o rebaixamento e tem dificuldades fora</li>
-                <li>Histórico recente favorece o Flu no clássico em casa</li>
-                <li>Gol de Acosta aos 61' confirma a superioridade</li>
-              </ul>
-            </div>
-
-            <div class="bg-gray-800/50 rounded-xl p-4">
-              <p class="text-xs text-gray-400 mb-1">Entradas secundárias</p>
-              <p class="text-sm">• Fluminense -0.5 (se ainda disponível)</p>
-              <p class="text-sm">• Under 3.5 gols</p>
-            </div>
-          </div>`
-      },
-      "coritiba-mirassol": {
-        titulo: "Coritiba x Mirassol",
-        status: "Amanhã 11:00",
-        analise: `
-          <div class="space-y-4">
-            <div class="bg-emerald-500/10 border border-emerald-500/30 rounded-xl p-4">
-              <p class="text-xs text-emerald-400 font-medium mb-1">ENTRADA SUGERIDA</p>
-              <p class="text-lg font-bold">Coritiba vence (1)</p>
-            </div>
-            <p class="text-sm text-gray-300">Coritiba joga em casa e tem melhor campanha. Mirassol costuma sofrer fora. Valor no mandante.</p>
-            <div class="grid grid-cols-3 gap-2 text-center text-sm">
-              <div class="bg-gray-800 rounded-lg p-2"><p class="text-gray-400 text-xs">1</p><p class="font-bold">46%</p></div>
-              <div class="bg-gray-800 rounded-lg p-2"><p class="text-gray-400 text-xs">X</p><p class="font-bold">28%</p></div>
-              <div class="bg-gray-800 rounded-lg p-2"><p class="text-gray-400 text-xs">2</p><p class="font-bold">26%</p></div>
-            </div>
-          </div>`
-      },
-      "cruzeiro-athletico": {
-        titulo: "Cruzeiro x Athletico-PR",
-        status: "Amanhã 16:00",
-        analise: `
-          <div class="space-y-4">
-            <div class="bg-emerald-500/10 border border-emerald-500/30 rounded-xl p-4">
-              <p class="text-xs text-emerald-400 font-medium mb-1">ENTRADA SUGERIDA</p>
-              <p class="text-lg font-bold">Ambas marcam (BTTS Sim)</p>
-            </div>
-            <p class="text-sm text-gray-300">Dois times ofensivos. Cruzeiro em casa e Athletico com ótimo ataque. Jogo aberto esperado.</p>
-            <div class="grid grid-cols-3 gap-2 text-center text-sm">
-              <div class="bg-gray-800 rounded-lg p-2"><p class="text-gray-400 text-xs">1</p><p class="font-bold">39%</p></div>
-              <div class="bg-gray-800 rounded-lg p-2"><p class="text-gray-400 text-xs">X</p><p class="font-bold">27%</p></div>
-              <div class="bg-gray-800 rounded-lg p-2"><p class="text-gray-400 text-xs">2</p><p class="font-bold">34%</p></div>
-            </div>
-          </div>`
-      },
-      "internacional-santos": {
-        titulo: "Internacional x Santos",
-        status: "Amanhã 16:00",
-        analise: `
-          <div class="space-y-4">
-            <div class="bg-emerald-500/10 border border-emerald-500/30 rounded-xl p-4">
-              <p class="text-xs text-emerald-400 font-medium mb-1">ENTRADA SUGERIDA</p>
-              <p class="text-lg font-bold">Under 2.5 gols</p>
-            </div>
-            <p class="text-sm text-gray-300">Jogo tendendo a ser travado. Inter em casa costuma ser sólido defensivamente. Santos irregular.</p>
-          </div>`
-      },
-      "remo-flamengo": {
-        titulo: "Remo x Flamengo",
-        status: "Amanhã 16:00",
-        analise: `
-          <div class="space-y-4">
-            <div class="bg-emerald-500/10 border border-emerald-500/30 rounded-xl p-4">
-              <p class="text-xs text-emerald-400 font-medium mb-1">ENTRADA SUGERIDA</p>
-              <p class="text-lg font-bold">Flamengo vence (2)</p>
-            </div>
-            <p class="text-sm text-gray-300">Flamengo é amplamente favorito. Mesmo jogando fora, qualidade individual e elenco superior fazem a diferença.</p>
-            <div class="grid grid-cols-3 gap-2 text-center text-sm">
-              <div class="bg-gray-800 rounded-lg p-2"><p class="text-gray-400 text-xs">1</p><p class="font-bold">15%</p></div>
-              <div class="bg-gray-800 rounded-lg p-2"><p class="text-gray-400 text-xs">X</p><p class="font-bold">22%</p></div>
-              <div class="bg-gray-800 rounded-lg p-2"><p class="text-gray-400 text-xs">2</p><p class="font-bold">63%</p></div>
-            </div>
-          </div>`
-      },
-      "botafogo-palmeiras": {
-        titulo: "Botafogo x Palmeiras",
-        status: "Amanhã 18:30",
-        analise: `
-          <div class="space-y-4">
-            <div class="bg-emerald-500/10 border border-emerald-500/30 rounded-xl p-4">
-              <p class="text-xs text-emerald-400 font-medium mb-1">ENTRADA SUGERIDA</p>
-              <p class="text-lg font-bold">Palmeiras +0.5 (Dupla chance X2)</p>
-            </div>
-            <p class="text-sm text-gray-300">Palmeiras é líder e tem melhor elenco. Botafogo em casa é competitivo, mas o Verdão não deve perder.</p>
-          </div>`
-      },
-      "corinthians-chapecoense": {
-        titulo: "Corinthians x Chapecoense",
-        status: "Amanhã 19:30",
-        analise: `
-          <div class="space-y-4">
-            <div class="bg-emerald-500/10 border border-emerald-500/30 rounded-xl p-4">
-              <p class="text-xs text-emerald-400 font-medium mb-1">ENTRADA SUGERIDA</p>
-              <p class="text-lg font-bold">Corinthians vence (1)</p>
-            </div>
-            <p class="text-sm text-gray-300">Corinthians em casa contra um time da parte de baixo. Favoritismo claro do Timão.</p>
-          </div>`
-      }
-    };
-
-    function abrirModal(id) {
-      const jogo = dados[id];
-      if (!jogo) return;
-      document.getElementById('modal-titulo').textContent = jogo.titulo;
-      document.getElementById('modal-conteudo').innerHTML = jogo.analise;
-      document.getElementById('modal').classList.remove('hidden');
-      document.getElementById('modal').classList.add('flex');
-      document.body.style.overflow = 'hidden';
-    }
-
-    function fecharModal() {
-      document.getElementById('modal').classList.add('hidden');
-      document.getElementById('modal').classList.remove('flex');
-      document.body.style.overflow = '';
-    }
-
-    // Fecha modal ao clicar fora
-    document.getElementById('modal').addEventListener('click', function(e) {
-      if (e.target === this) fecharModal();
-    });
-
-    // Data automática
-    const hoje = new Date();
-    document.getElementById('data-hoje').textContent = hoje.toLocaleDateString('pt-BR');
-  </script>
 </body>
 </html>
